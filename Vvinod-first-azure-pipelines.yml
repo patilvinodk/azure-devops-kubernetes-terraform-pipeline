@@ -22,10 +22,11 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sqMavenPluginVersionChoice: 'latest'
+- bash: ls -R $(System.DefaultWorkingDirectory)
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'PSL113790_ICC_Remediation_REQ000000762833(6c980470-27a0-4759-b7dc-26ed1c492299)'
     appType: 'webApp'
     WebAppName: 'k8s-cluster'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.jar'
